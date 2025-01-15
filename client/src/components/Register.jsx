@@ -1,4 +1,6 @@
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
+import "../index.css";
 
 const initialValues = {
   firstname: "",
@@ -33,6 +35,10 @@ const validate = (values) => {
     errors.email = "Invalid email address";
   }
 
+  if (!values.username.trim()) {
+    errors.username = "Required";
+  }
+
   if (!values.password.trim()) {
     errors.password = "Required";
   }
@@ -49,8 +55,8 @@ const Register = () => {
 
   return (
     <>
-      <div className="flex justify-center h-[90vh] items-center p-44">
-        <div className="flex justify-between gap-10">
+      <div className="flex justify-center h-[90vh] items-center px-44">
+        <div className="flex justify-between">
           <div className="flex items-center">
             <h1 className="text-5xl font-bold text-white">
               Register yourself to get started...
@@ -58,7 +64,7 @@ const Register = () => {
           </div>
           <form
             action=""
-            className="border-2 p-8 bg-slate-700 rounded-2xl"
+            className="p-8 bg-slate-700 custom-box-shadow w-[540px]"
             onSubmit={formik.handleSubmit}
           >
             <div>
@@ -67,6 +73,12 @@ const Register = () => {
               </label>
               <div className="flex gap-4 mt-2">
                 <div className="flex flex-col">
+                  <label
+                    htmlFor="firstname"
+                    className="text-xs mb-1 text-gray-400"
+                  >
+                    First Name
+                  </label>
                   <input
                     type="text"
                     name="firstname"
@@ -78,19 +90,19 @@ const Register = () => {
                     value={formik.values.firstname}
                   />
                   {formik.touched.firstname && formik.errors.firstname ? (
-                    <p className="text-xs font-extralight bg-red-600 italic">
+                    <p className="text-xs font-extralight text-red-600 mt-1 italic">
                       {formik.errors.firstname}
                     </p>
                   ) : null}
-                  <label
-                    htmlFor="firstname"
-                    className="text-xs mt-1 text-gray-400"
-                  >
-                    First Name
-                  </label>
                 </div>
 
                 <div className="flex flex-col">
+                  <label
+                    htmlFor="lastname"
+                    className="text-xs mb-1 text-gray-400"
+                  >
+                    Last Name
+                  </label>
                   <input
                     type="text"
                     name="lastname"
@@ -102,16 +114,10 @@ const Register = () => {
                     value={formik.values.lastname}
                   />
                   {formik.touched.lastname && formik.errors.lastname ? (
-                    <p className="text-xs font-extralight bg-red-600 italic">
+                    <p className="text-xs font-extralight text-red-600 mt-1 italic">
                       {formik.errors.lastname}
                     </p>
                   ) : null}
-                  <label
-                    htmlFor="lastname"
-                    className="text-xs mt-1 text-gray-400"
-                  >
-                    Last Name
-                  </label>
                 </div>
               </div>
             </div>
@@ -131,7 +137,7 @@ const Register = () => {
                 value={formik.values.email}
               />
               {formik.touched.email && formik.errors.email ? (
-                <p className="text-xs font-extralight bg-red-600 italic">
+                <p className="text-xs font-extralight text-red-600 mt-1 italic">
                   {formik.errors.email}
                 </p>
               ) : null}
@@ -152,7 +158,7 @@ const Register = () => {
                 value={formik.values.username}
               />
               {formik.touched.username && formik.errors.username ? (
-                <p className="text-xs font-extralight bg-red-600 italic">
+                <p className="text-xs font-extralight text-red-600 mt-1 italic">
                   {formik.errors.username}
                 </p>
               ) : null}
@@ -173,7 +179,7 @@ const Register = () => {
                 value={formik.values.password}
               />
               {formik.touched.password && formik.errors.password ? (
-                <p className="text-xs font-extralight bg-red-600 italic">
+                <p className="text-xs font-extralight text-red-600 italic mt-1">
                   {formik.errors.password}
                 </p>
               ) : null}
@@ -187,6 +193,12 @@ const Register = () => {
                 Register
               </button>
             </div>
+
+            <Link to={"/login"}>
+              <p className="text-blue-300 hover:underline mt-2">
+                Already registered? Click here.
+              </p>
+            </Link>
           </form>
         </div>
       </div>

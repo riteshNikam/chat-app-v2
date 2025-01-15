@@ -1,12 +1,14 @@
 import Navbar from "./components/Navbar";
-import Register from "./components/Register";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <div className="h-[100vh] bg-slate-800">
+      <div className="bg-slate-800">
         <Navbar></Navbar>
-        <Register></Register>
+        <main>
+          <Outlet></Outlet>
+        </main>
       </div>
     </>
   );
