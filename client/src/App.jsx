@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import Layout from "./components/Layout";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import { useSelector } from "react-redux";
