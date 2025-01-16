@@ -14,8 +14,8 @@ const Navbar = () => {
               to={"/register"}
               className={({ isActive }) => {
                 return isActive
-                  ? `mr-2 px-5 py-2 rounded-3xl font-semibold bg-slate-800`
-                  : `mr-2 px-5 py-2 rounded-3xl font-semibold hover:bg-slate-800`;
+                  ? `mr-1 px-5 py-2 rounded-3xl font-semibold bg-slate-800`
+                  : `mr-1 px-5 py-2 rounded-3xl font-semibold hover:bg-slate-800`;
               }}
             >
               Register

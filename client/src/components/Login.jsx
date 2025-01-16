@@ -1,13 +1,11 @@
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../store/userSlice";
 
 const initialValues = {
   email: "",
   password: "",
-};
-
-const onSubmit = (values) => {
-  console.log(values);
 };
 
 const validate = (values) => {
@@ -27,9 +25,16 @@ const validate = (values) => {
 };
 
 const Login = () => {
+  const { loggedIn } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+  console.log(loggedIn);
+
   const formik = useFormik({
     initialValues,
-    onSubmit,
+    onSubmit: (values) => {
+      console.log(values);
+      dispatch(login());
+    },
     validate,
   });
 
@@ -39,7 +44,7 @@ const Login = () => {
         <div className="flex justify-between gap-10">
           <div className="flex items-center">
             <h1 className="text-5xl font-bold text-white">
-              Login to get started...
+              Login to get started
             </h1>
           </div>
           <form
@@ -60,6 +65,9 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
+                text-5xl
+                font-bold
+                text-white
               />
               {formik.touched.email && formik.errors.email ? (
                 <p className="text-xs font-extralight text-red-600 mt-1 italic">
@@ -100,7 +108,7 @@ const Login = () => {
 
             <Link to={"/register"}>
               <p className="text-blue-300 hover:underline mt-2">
-                Don't have account? Click here.
+                Don't have an account? Click here.
               </p>
             </Link>
           </form>

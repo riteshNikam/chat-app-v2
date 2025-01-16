@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <>
       <div className="px-44 h-[90vh] flex justify-center items-center flex-col">
-        <div className="text-white text-lg mb-3 text-center">
+        <div className="text-white text-3xl mb-10 text-center">
           <p>This a simple text based, real time chat application.</p>
           <p>Login to get started</p>
         </div>
