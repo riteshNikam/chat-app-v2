@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { login } from "../store/userSlice";
 
 const initialValues = {
@@ -25,15 +25,14 @@ const validate = (values) => {
 };
 
 const Login = () => {
-  const { loggedIn } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-  console.log(loggedIn);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues,
     onSubmit: (values) => {
-      console.log(values);
       dispatch(login());
+      navigate("/", { replace: true });
     },
     validate,
   });
